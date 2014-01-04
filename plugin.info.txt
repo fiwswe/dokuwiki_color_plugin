@@ -1,0 +1,6 @@
+base   color
+author Christopher Smith
+date   2008-02-06
+name   color syntax plugin
+desc   Write colored text in DokuWiki.
+url    https://www.dokuwiki.org/plugin:color
