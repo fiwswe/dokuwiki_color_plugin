@@ -18,20 +18,6 @@ require_once(DOKU_PLUGIN.'syntax.php');
  */
 class syntax_plugin_color extends DokuWiki_Syntax_Plugin {
  
-    /**
-     * return some info
-     */
-    function getInfo(){
-        return array(
-            'author' => 'Christopher Smith',
-            'email'  => 'chris@jalakai.co.uk',
-            'date'   => '2008-02-06',
-            'name'   => 'Color Plugin',
-            'desc'   => 'Changes text colour and background',
-            'url'    => 'http://www.dokuwiki.org/plugin:tutorial',
-        );
-    }
- 
     function getType(){ return 'formatting'; }
     function getAllowedTypes() { return array('formatting', 'substition', 'disabled'); }   
     function getSort(){ return 158; }
