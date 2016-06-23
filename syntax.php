@@ -59,6 +59,26 @@ class syntax_plugin_color extends DokuWiki_Syntax_Plugin {
             }
             return true;
         }
+        if($mode == 'odt'){
+            list($state, $match) = $data;
+            switch ($state) {
+              case DOKU_LEXER_ENTER :      
+                list($color, $background) = $match;
+                if (class_exists('ODTDocument')) {
+                    $renderer->_odtSpanOpenUseCSS (NULL, 'style="'.$color.$background.'"');
+                }
+                break;
+ 
+              case DOKU_LEXER_UNMATCHED :
+                $renderer->cdata($match);
+                break;
+
+              case DOKU_LEXER_EXIT :
+                $renderer->_odtSpanClose();
+                break;
+            }
+            return true;
+        }
         return false;
     }
  
