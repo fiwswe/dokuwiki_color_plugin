@@ -74,7 +74,9 @@ class syntax_plugin_color extends DokuWiki_Syntax_Plugin {
                 break;
 
               case DOKU_LEXER_EXIT :
-                $renderer->_odtSpanClose();
+                if (class_exists('ODTDocument')) {
+                    $renderer->_odtSpanClose();
+                }
                 break;
             }
             return true;
