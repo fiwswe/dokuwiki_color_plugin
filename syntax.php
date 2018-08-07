@@ -85,7 +85,7 @@ class syntax_plugin_color extends DokuWiki_Syntax_Plugin {
             list($state, $match) = $data;
             switch ($state) {
               case DOKU_LEXER_UNMATCHED :
-                $renderer->cdata($match);
+                if ($renderer->capture) $renderer->cdata($match);
                 break;
             }
             return true;
