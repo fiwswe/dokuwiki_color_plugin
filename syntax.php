@@ -81,6 +81,15 @@ class syntax_plugin_color extends DokuWiki_Syntax_Plugin {
             }
             return true;
         }
+        if($mode == 'metadata'){
+            list($state, $match) = $data;
+            switch ($state) {
+              case DOKU_LEXER_UNMATCHED :
+                if ($renderer->capture) $renderer->cdata($match);
+                break;
+            }
+            return true;
+        }
         return false;
     }
  
