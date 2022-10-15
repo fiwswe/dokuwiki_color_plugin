@@ -92,22 +92,13 @@ class syntax_plugin_color extends DokuWiki_Syntax_Plugin {
  
     // validate color value $c
     // this is cut price validation - only to ensure there is nothing harmful
-    // recognize rgb, rgba, hsl, hsla but don't try to valiedate their arguments,
     // just ensure that no illegal characters are included therein
-    // and that the number of characters is reasonable
     // leave it to the browsers to ignore a faulty colour specification
     function _isValid($c) {
-        $c = trim($c);
+        if (strpos($c, ';') === false)
+            return trim($c);
  
-        $pattern = "/^\s*(
-            ([a-zA-Z]+)|                         #colorname - not verified
-            (\#([0-9a-fA-F]{3,8}))|              #colorvalue including possible alpha
-            ((rgba?|hsla?)\([0-9%., ]{5,40}\))   #rgb[a], hsl[a]
-            )\s*$/x";
- 
-        if (preg_match($pattern, $c)) return trim($c);
- 
-        return "";
+        return '';
     }
 }
 ?>
