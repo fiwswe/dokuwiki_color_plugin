@@ -28,7 +28,9 @@ class syntax_plugin_color extends DokuWiki_Syntax_Plugin {
     function handle($match, $state, $pos, Doku_Handler $handler){
         switch ($state) {
           case DOKU_LEXER_ENTER :
-                list($color, $background) = preg_split("/\//u", substr($match, 6, -1), 2);
+                $m = preg_split("/\//u", substr($match, 6, -1), 2);
+                $color = isset($m[0]) ? $m[0] : null;
+                $background = isset($m[1]) ? $m[1] : null;
                 if ($color = $this->_isValid($color)) $color = "color:$color;";
                 if ($background = $this->_isValid($background)) $background = "background-color:$background;";
                 return array($state, array($color, $background));
